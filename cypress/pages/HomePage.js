@@ -1,4 +1,4 @@
-import { recurse } from 'cypress-recurse'
+//import { recurse } from 'cypress-recurse'
 
 class HomePage {
   
@@ -27,6 +27,10 @@ class HomePage {
       cy.get('div[class=failMsg]', { timeout: 10000 })
         .should('be.visible')
         .and('contain', errorMsg)
+    }
+
+    clickOnContinue(nextPage){
+      cy.get(`Continue to ${nextPage}`).click()
     }
 
   }

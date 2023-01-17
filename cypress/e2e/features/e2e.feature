@@ -1,10 +1,10 @@
-@waste
-Feature: Waste - Household Carbon Footprint Calculator 
+@e2e @regression
+Feature: Household Carbon Footprint Calculator 
 
 Background:
   Given I visit Carbon Footprint Calculator
 
-  Scenario: Calculate the Home Waste Carbon Footprint 
+  Scenario: Calculate Household Carbon Footprint 
     Then I should see Get Started Form
     When I search by a number of people and zip code
     And click on the "Waste" menu option

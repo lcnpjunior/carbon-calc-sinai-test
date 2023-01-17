@@ -1,17 +1,17 @@
-Feature: Carbon Footprint Calculator Home Page
+@home
+Feature: Household Carbon Footprint Calculator Home Page
 
 Background:
   Given I visit Carbon Footprint Calculator
 
-  Scenario: Search the carbon footprint of your house with success
+  Scenario: Search for a house zip code with success
     Then I should see Get Started Form
     When I search by a number of people and zip code
 
   @validade_home_fields
-  Scenario Outline: Validate the fields requiriments 
+  Scenario Outline: Validate home page fields requiriments 
     When I search by <numberOfPeople> and <zipCode>
     Then I should see the <errorMessage>
-
 Examples:
     | numberOfPeople | zipCode   | errorMessage                              |
     |      ""        | "00002"   |"Please enter a valid number of people."   |

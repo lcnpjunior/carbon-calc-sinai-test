@@ -1,26 +1,25 @@
-
 class HomeEnergyPage {
 
   selectPrimaryHeatingSource(){
     cy.get('#primaryHeatingSource').select('Natural Gas')
   }
-  setNaturalGas(input){
-    cy.get('#naturalGasTextInput').type(input)
+  setNaturalGas(naturalGasTextInput){
+    cy.get('#naturalGasTextInput').type(naturalGasTextInput)
     cy.get('#naturalGasSelectInput').select('Dollars')
   }
-  setElectricity(input){
-    cy.get('#electricityTextInput').type(input)
+  setElectricity(electricityTextInput){
+    cy.get('#electricityTextInput').type(electricityTextInput)
     cy.get('#electricitySelectInput').select('Dollars')
   }
-  setFuelOil(input){
-    cy.get('#fuelTextInput').type(input)
+  setFuelOil(fuelTextInput){
+    cy.get('#fuelTextInput').type(fuelTextInput)
     cy.get('#fuelSelectInput').select('Dollars')
   }
-  setPropane(input){
-    cy.get('#propaneTextInput').type(input)
+  setPropane(propaneTextInput){
+    cy.get('#propaneTextInput').type(propaneTextInput)
     cy.get('#propaneSelectInput').select('Dollars')
   }
-  fillInEnergiesSources(){
+  fillInEnergyCurrenctEmissions(){
     this.selectPrimaryHeatingSource()
     this.setNaturalGas('23')
     this.setElectricity('44')
@@ -28,23 +27,23 @@ class HomeEnergyPage {
     this.setPropane('37')
   }
 
-  setHeatingColling(input, input2){
-    cy.get('#energyAC').type(input)
-    cy.get('#energyHeat').type(input2)
+  setHeatingColling(energyAC, energyHeat){
+    cy.get('#energyAC').type(energyAC)
+    cy.get('#energyHeat').type(energyHeat)
   }
 
-  setLighting(input){
-    cy.get('#lightsToReplace').type(input)
+  setLighting(lightsToReplace){
+    cy.get('#lightsToReplace').type(lightsToReplace)
   }
 
-  setPowerSourceSettings(input){
+  setPowerSourceSettings(loadsPerWeek){
     cy.get('#coldWaterSelect').select('Will Do')
-    cy.get('#loadsPerWeek').type(input)
+    cy.get('#loadsPerWeek').type(loadsPerWeek)
   }
 
-  setWashingDrying(input){
+  setWashingDrying(energyAC){
     cy.get('#pwrMgmtSelect').select('Will Do')
-    cy.get('#energyAC').type(input)
+    cy.get('#energyAC').type(energyAC)
 
     cy.get('#AirDrySelect').select('Will Do')
     cy.get('#percentageAirDrySelect').select('50% of my Laundry')
@@ -56,15 +55,13 @@ class HomeEnergyPage {
     cy.get('#windowSelect').select('Will Do')
   }
 
-  fillInReduceYourEmissions(){
+  fillInEnergyEmissionsReductions(){
     this.setHeatingColling(10, 10)
     this.setLighting(2)
     this.setPowerSourceSettings(2)
     this.setWashingDrying(3)
     this.setEnergyStarProducts()
   }
-
-
 
 }
   
