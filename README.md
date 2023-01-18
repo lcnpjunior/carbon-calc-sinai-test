@@ -5,23 +5,25 @@
 yarn install
 ```
 ### Running the tests
-- Open cypress dashboard:
+The tests can be run through the Cypress GUI or the command line.
+Examples: 
+- Open Cypress GUI:
 ```
 yarn run cy:open
 ```
-- Chrome browser:
+- Run with chrome browser:
 ```
 yarn run cy:chrome
 ```
-- Firefox browser:
+- Run with Firefox browser:
 ```
 yarn run cy:firefox
 ```
-- Headless:
+- Run with on headless mode:
 ```
 yarn run cy:headless
 ```
-- End-To-End Tests:
+- Run with the End-To-End tests:
 ```
 yarn run cy:e2e
 ```
