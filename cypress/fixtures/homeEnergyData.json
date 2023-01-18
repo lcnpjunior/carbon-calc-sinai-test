@@ -1,0 +1,46 @@
+{
+    "primaryHeating": [
+        "Natural Gas",
+        "Electricity",
+        "Fuel Oil",
+        "Propane"
+    ],
+    "naturalGas": {
+        "dollars": {
+            "avg_value": 23
+        },
+        "cubicFeet": {
+            "avg_value": 2.15
+        },
+        "therms": {
+            "avg_value": 23
+        }
+    },
+    "eletricity": {
+        "dollars": {
+            "avg_value": 44
+        },
+        "kWh": {
+            "avg_value": 369.74
+        },
+        "electricGreen": {
+            "avg_value": 0
+        }
+    },
+    "fuelOil": {
+        "dollars": {
+            "avg_value": 72
+        },
+        "gallons": {
+            "avg_value": 17.9
+        }
+    },
+    "propane": {
+        "dollars": {
+            "avg_value": 37
+        },
+        "gallons": {
+            "avg_value": 14.979
+        }
+    }
+}

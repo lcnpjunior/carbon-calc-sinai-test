@@ -1,5 +1,5 @@
-import { constants } from '../support/constants'
-import * as vehicleData  from '../fixtures/vehicleData.json'
+import { constants } from '../../fixtures/constants'
+import * as vehicleData  from '../../fixtures/vehicleData.json'
 
 class TransportationPage {
   

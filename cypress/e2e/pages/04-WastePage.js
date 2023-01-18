@@ -1,7 +1,4 @@
-import { constants } from '../support/constants'
-
-export let wasteAlreadySaved = 0
-export let wasteWillSave = 0 
+import { constants } from '../../fixtures/constants'
 
 class WastePage {
 
@@ -13,9 +10,7 @@ class WastePage {
             .children()
             .contains(item)
             .click()
-			wasteAlreadySaved += this.wasteSavings(3, item)
-		})
-		cy.log(Math.round(wasteAlreadySaved))
+		})	
     }
 
     selectWasteReductionCheckboxes(items){
@@ -24,25 +19,29 @@ class WastePage {
             .children()
             .children()
             .contains(item)
-            .click()  
-			wasteWillSave += this.wasteSavings(3, item)
-		})  
-		cy.log(Math.round(wasteWillSave))                
+            .click()  			
+		})  		          
     }
 
-	validadeCurrenctRecycleEmissions(){
+	validadeCurrenctRecycleEmissions(items){
+		let wasteAlreadySaved = 0
+		items.forEach(item => {
+			wasteAlreadySaved += this.wasteSavings(numberOfPeople, item)
+		})
 		cy.get('.wasteAlreadySaved')
 			.should('be.visible')
-			.and('contain.text', Math.round(wasteAlreadySaved*-1).toString())
+			.and('contain.text', Math.round(wasteAlreadySaved*-1).toLocaleString("en-US"))
 	}
 
-	validadeNewRecycleEmissions(){
+	validadeNewRecycleEmissions(items){
+		let wasteWillSave = 0 
+		items.forEach(item => {
+			wasteWillSave += this.wasteSavings(numberOfPeople, item)
+		})
 		cy.get('.wasteWillSave')
 			.should('be.visible')
-			.and('contain.text', Math.round(wasteWillSave*-1).toString())
+			.and('contain.text', Math.round(wasteWillSave*-1).toLocaleString("en-US"))
 	}
-
-
 
     wasteSavings(numPeople, item){
 		let savings = 0;
