@@ -4,7 +4,7 @@ Feature: HomeEnergy - Household Carbon Footprint Calculator
 Background:
   Given I visit Carbon Footprint Calculator
 
-  @ready @dollar
+  @ready @dollar-based
   Scenario: Calculate the Home Energy Carbon Footprint - Dollar-Based
     When I initiate the the calculation with "4" people and the "18410" zip code
       And I select "Natural Gas" as household's primary heating source
