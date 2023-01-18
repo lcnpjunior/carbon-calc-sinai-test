@@ -1,11 +1,20 @@
 {
+  "name": "carbon-calc-sinai-test",
+  "version": "1.0.0",
+  "description": "Carbon Footprint Calculator - Sinai Test",
+  "author": "Luiz Pereira",
+  "scripts": {
+    "cy:open": "yarn run cypress open",
+    "cy:chrome": "yarn run cypress run --browser chrome",
+    "cy:firefox": "yarn run cypress run --browser firefox",
+    "cy:headless": "yarn run cypress run --browser --headless",
+    "cy:e2e": "yarn run cypress run --env tags=@e2e"
+    
+  },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^15.1.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
     "cypress": "^12.3.0"
-  },
-  "devDependencies": {
-    "cypress-recurse": "^1.27.0"
   },
   "cypress-cucumber-preprocessor": {
     "filterSpecs": true,

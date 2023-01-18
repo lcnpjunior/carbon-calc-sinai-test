@@ -1,13 +1,13 @@
 @home
 Feature: Household Carbon Footprint Calculator Home Page
  
-  @home_success @smoke
+  @home_success @smoke @ready
   Scenario: Get started with success
     Given I visit Carbon Footprint Calculator
     Then I should see Get Started Form
     When I initiate the the calculation with "4" people and the "18410" zip code
 
-  @validade_home_fields
+  @validade_home_fields @ready
   Scenario Outline: Validate home page fields requiriments 
     Given I visit Carbon Footprint Calculator
     When I initiate the the calculation with <numberOfPeople> people and the <zipCode> zip code
