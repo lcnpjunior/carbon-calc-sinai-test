@@ -25,7 +25,6 @@ module.exports = defineConfig({
     setupNodeEvents,
     baseUrl: "https://www3.epa.gov/carbon-footprint-calculator/",
     hideXHR: true,
-    calcData: "",
     defaultCommandTimeout: 10000
   },
 });

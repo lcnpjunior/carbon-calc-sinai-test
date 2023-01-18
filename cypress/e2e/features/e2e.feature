@@ -16,7 +16,7 @@ Background:
   Scenario: Calculate Household Carbon Footprint - Complete Energy and Transportation sections
     Then I should see Get Started Form
     When I search by a number of people and zip code
-    And I fill in the "Home Energy", "Transportation" and, "Waste" sections
+    And I fill in the all sections
     Then I can check my Household Carbon Footprint Report
     And I see the message 'Make a selection in all calculator sections and fields to improve your results.' 
 

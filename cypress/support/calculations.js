@@ -1,12 +1,11 @@
-  import '../support/constants'
 import { constants } from '../support/constants'
   let numberOfPeople = 3
   let zipCode = '18410'
 
 
-  let currentTotal = 0
-  let newTotal = 0
-  let USAverage = 0
+  let totalEmissions = 0
+  let newEmissionTotal = 0
+  let USAverage = 12.559
 
   let currentWaste = 0
   let newWaste = 0

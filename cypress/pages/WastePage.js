@@ -1,39 +1,66 @@
+import { constants } from '../support/constants'
+
+export let wasteAlreadySaved = 0
+export let wasteWillSave = 0 
+
 class WastePage {
- 
-    checkCurrenctRecycleMaterials(productName){
-        cy.get('.waste-checkboxes')
+
+    selectWasteRecycleMaterialsCheckboxes(items){
+		items.forEach(item => {
+			cy.get('.waste-checkboxes')
             .first()
             .children()
             .children()
-            .contains(productName)
+            .contains(item)
             .click()
+			wasteAlreadySaved += this.wasteSavings(3, item)
+		})
+		cy.log(Math.round(wasteAlreadySaved))
     }
 
-    checkStartRecycleMaterials(productName){
-        cy.get('#wasteReductionRadios')
+    selectWasteReductionCheckboxes(items){
+		items.forEach(item => {
+			cy.get('#wasteReductionRadios')
             .children()
             .children()
-            .contains(productName)
-            .click()                    
+            .contains(item)
+            .click()  
+			wasteWillSave += this.wasteSavings(3, item)
+		})  
+		cy.log(Math.round(wasteWillSave))                
     }
 
-    wasteSavings(factor){
+	validadeCurrenctRecycleEmissions(){
+		cy.get('.wasteAlreadySaved')
+			.should('be.visible')
+			.and('contain.text', Math.round(wasteAlreadySaved*-1).toString())
+	}
+
+	validadeNewRecycleEmissions(){
+		cy.get('.wasteWillSave')
+			.should('be.visible')
+			.and('contain.text', Math.round(wasteWillSave*-1).toString())
+	}
+
+
+
+    wasteSavings(numPeople, item){
 		let savings = 0;
-		switch (factor) {
-			case 0:
-				savings = numPeople * g_NEWSPAPER_REDUCTION;
+		switch (item) {
+			case 'newspaper':
+				savings = numPeople * constants.g_NEWSPAPER_REDUCTION;
 				break;
-			case 1:
-				savings = numPeople * g_GLASS_REDUCTION;
+			case 'glass':
+				savings = numPeople * constants.g_GLASS_REDUCTION;
 				break;
-			case 2:
-				savings = numPeople * g_PLASTIC_REDUCTION;
+			case 'plastic':
+				savings = numPeople * constants.g_PLASTIC_REDUCTION;
 				break;
-			case 3:
-				savings = numPeople * g_METAL_REDUCTION;
+			case 'aluminum & steel cans':
+				savings = numPeople * constants.g_METAL_REDUCTION;
 				break;
-			case 4:
-				savings = numPeople * g_MAGAZINE_REDUCTION;
+			case 'magazines':
+				savings = numPeople * constants.g_MAGAZINE_REDUCTION;
 				break;
 			default:
 				break;
