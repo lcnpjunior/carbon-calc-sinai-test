@@ -8,8 +8,8 @@ Background:
   Scenario: Calculate the Home Energy Carbon Footprint - Dollar-Based
     When I initiate the the calculation with "4" people and the "18410" zip code
       And I select "Natural Gas" as household's primary heating source
-      And I fill in the Home average monthly bills with dollar-based
-      And I fill in the Home Emissions Reductions
+      And I fill in the Home Energy Current Emissions with the average monthly bills dollar-based
+      And I fill in the Home Energy Emissions Reductions
     Then It shows the Estimated Annual Savings for Home Energy
 
   # Scenario: Calculate the Home Energy Carbon Footprint - Random Selected Input

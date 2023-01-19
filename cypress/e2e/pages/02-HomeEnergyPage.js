@@ -1,5 +1,4 @@
 import { constants } from '../../fixtures/constants'
-import * as homeEnergyData  from '../../fixtures/homeEnergyData.json'
 
 class HomeEnergyPage {
 
@@ -11,7 +10,7 @@ class HomeEnergyPage {
     if(selectedType!='')
       cy.get('#naturalGasSelectInput').select(selectedType)
   }
-  setElectricity(electricityTextInput, electricityGreenTextInput=0, selectedType=''){
+  setElectricity(electricityTextInput, selectedType='', electricityGreenTextInput=0,){
     cy.get('#electricityTextInput').type(electricityTextInput)
     if(selectedType!='')
       cy.get('#electricitySelectInput').select(selectedType)
@@ -28,12 +27,12 @@ class HomeEnergyPage {
       cy.get('#propaneSelectInput').select(selectedType)
   }
 
-  fillInEnergyCurrenctEmissions(){       
-    this.setNaturalGas(homeEnergyData.naturalGas.dollars.avg_value)
-    this.setElectricity(homeEnergyData.eletricity.dollars.avg_value)
-    this.setFuelOil(homeEnergyData.fuelOil.dollars.avg_value)
-    this.setPropane(homeEnergyData.propane.dollars.avg_value)
-  }
+  // fillInEnergyCurrenctEmissions(){       
+  //   this.setNaturalGas(homeEnergyData.naturalGas.dollars.avg_value)
+  //   this.setElectricity(homeEnergyData.eletricity.dollars.avg_value)
+  //   this.setFuelOil(homeEnergyData.fuelOil.dollars.avg_value)
+  //   this.setPropane(homeEnergyData.propane.dollars.avg_value)
+  // }
 
   setHeatingColling(energyAC, energyHeat){
     cy.get('#energyAC').type(energyAC)
@@ -44,35 +43,43 @@ class HomeEnergyPage {
     cy.get('#lightsToReplace').type(lightsToReplace)
   }
 
-  setPowerSourceSettings(increaseGreenInput, choose='Will Do'){
-    cy.get('#pwrMgmtSelect').select(choose)
+  setPowerSourceSettings(pwrMgmtOption='Choose One', increaseGreenInput){
+    cy.get('#pwrMgmtSelect').select(pwrMgmtOption)
     cy.get('#increaseGreenInput').type(increaseGreenInput)
   }
 
-  setWashingDrying(loadsPerWeek, choose1='Will Do', choose2='Will Do'){
-    cy.get('#coldWaterSelect').select(choose1)
+  setWashingDrying(coldWaterOption, loadsPerWeek, airDryOption, percentageAirDryOption){
+    cy.get('#coldWaterSelect').select(coldWaterOption)
     cy.get('#loadsPerWeek').type(loadsPerWeek)
 
-    cy.get('#AirDrySelect').select(choose2)
-    cy.get('#percentageAirDrySelect').select('50% of my Laundry')
+    cy.get('#AirDrySelect').select(airDryOption)
+    cy.get('#percentageAirDrySelect').select(percentageAirDryOption)
   }
 
-  setEnergyStarProducts(choose1='Will Do', choose2='Will Do', choose3='Will Do'){
-    cy.get('#fridgeSelect').select(choose1)
-    cy.get('#furnaceSelect').select(choose2)
-    cy.get('#windowSelect').select(choose3)
+  setEnergyStarProducts(fridgeOption, furnaceOption, windowOption){
+    cy.get('#fridgeSelect').select(fridgeOption)
+    cy.get('#furnaceSelect').select(furnaceOption)
+    cy.get('#windowSelect').select(windowOption)
   }
 
-  fillInEnergyEmissionsReductions(){
-    this.setHeatingColling(10, 10)
-    this.setLighting(2)
-    this.setPowerSourceSettings(2)
-    this.setWashingDrying(3)
-    this.setEnergyStarProducts()
+  validateCurrenctTotalEmissions(currentTotal){     
+    cy.get('.totalEmissions').should('be.visible').and('contains.text', currentTotal)
   }
 
-  validateNaturalGasEmissions(){
-    let naturalGasEmissions = this.calcNaturalGasEmissions(homeEnergyData.naturalGas.dollars.avg_value)    
+  validateNewTotalEmissions(newTotal){     
+    cy.get('.newEmissionTotal').should('be.visible').and('contains.text', newTotal)
+  }
+
+  // fillInEnergyEmissionsReductions(reductionsData){
+  //   this.setHeatingColling(reductionsData.energyAC, reductionsData.energyHeat)
+  //   this.setLighting(reductionsData.lightsToReplace)
+  //   this.setPowerSourceSettings(reductionsData.pwrMgmtSelect, reductionsData.increaseGreenInput)
+  //   this.setWashingDrying(reductionsData.coldWaterSelect, reductionsData.loadsPerWeek, reductionsData.AirDrySelect, reductionsData.percentageAirDrySelect)
+  //   this.setEnergyStarProducts(reductionsData.fridgeSelect, reductionsData.furnaceSelect, reductionsData.windowSelect)
+  // }
+
+  validateNaturalGasEmissions(homeEnergyEmissions){
+    let naturalGasEmissions = this.calcNaturalGasEmissions(homeEnergyEmissions.naturalGasTextInput, homeEnergyEmissions.naturalGasSelectInput)    
     cy.get('.naturalGas .green-lb-total').should('be.visible').and('contains.text', naturalGasEmissions.toLocaleString("en-US"))
   }
 
