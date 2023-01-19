@@ -11,10 +11,10 @@ class TransportationPage {
         cy.get('#maintCurrentSelect').select(numVehiclesInput)
     }
 
-    fillInVehiclesAverageEmissions(){   
-        this.fillInVehiclesQtd(vehicleData.vehiclesCurrentEmissionsList.length)
+    fillInVehiclesAverageEmissions(vehiclesCurrentEmissionsList){   
+        this.fillInVehiclesQtd(vehiclesCurrentEmissionsList.length)
         this.selectVehicleCurrentMaintenance('Already Done')     
-        vehicleData.vehiclesCurrentEmissionsList.forEach((el, index) => {
+        vehiclesCurrentEmissionsList.forEach((el, index) => {
             cy.get(`#vehicle${index+1}Miles`).type(el.vehicleMiles)
             cy.get(`#vehicle${index+1}Select`).select(el.vehicleSelec)
             cy.get(`#vehicle${index+1}GasMileage`).type(el.vehicleGasMileage)
@@ -25,23 +25,23 @@ class TransportationPage {
         cy.get('#maintReduceSelect').select(maintReduceSelect)
     }
 
-    fillInVehiclesReductionsAverage(){
-        vehicleData.vehiclesEmissionsReductionsList.forEach((el, index) => {
+    fillInVehiclesReductionsAverage(vehiclesEmissionsReductionsList){
+        vehiclesEmissionsReductionsList.forEach((el, index) => {
             cy.get(`#reduceMilesInput${index+1}`).type(el.reduceMilesInput)
             cy.get(`#reduceMilesSelect${index+1}`).select(el.reduceMilesSelect)
             cy.get(`#replaceVehicleInput${index+1}`).type(el.replaceVehicleInput)
         })
     }
 
-    validateCurrentEstimdatedCOEmissions(){
-        vehicleData.vehiclesCurrentEmissionsList.forEach((el, index)=> {
+    validateCurrentEstimdatedCOEmissions(vehiclesCurrentEmissionsList){
+        vehiclesCurrentEmissionsList.forEach((el, index)=> {
             let coEmission = this.calcVehicleExhaust(el.vehicleMiles, el.vehicleGasMileage)
             cy.get(`.vehicle${index+1}Co2`).should('be.visible').and('contain.text', coEmission.toLocaleString("en-US"))
         })
     }
 
-    validateEstimatedAnnualSavings(){
-        vehicleData.vehiclesEmissionsReductionsList.forEach((el, index)=> {
+    validateEstimatedAnnualSavings(vehiclesEmissionsReductionsList){
+        vehiclesEmissionsReductionsList.forEach((el, index)=> {
 
             let calcVehicleExhaustSaving = this.calcVehicleExhaust(el.reduceMilesInput, el.replaceVehicleInput)
             cy.get(`.reduceMilesVehicle${index+1}Co2`).should('be.visible').and('contain.text', calcVehicleExhaustSaving.toLocaleString("en-US")) 

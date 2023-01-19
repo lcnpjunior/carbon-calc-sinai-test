@@ -14,7 +14,7 @@ Background:
 
   @home_section @waste_section @ready
   Scenario: Calculate Household Carbon Footprint - Complete Energy and Waste sections    
-    When I initiate the the calculation with "4" people and the "18410" zip code
+    When I initiate the the calculation with "3" people and the "66160" zip code
       And I select "Natural Gas" as household's primary heating source
       And I fill in the "Home Energy" and "Waste" sections    
     Then I click on View Your Report button and then I can check my Household Carbon Footprint Report

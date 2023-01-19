@@ -1,0 +1,76 @@
+{
+    "scenario01": {
+        "homeEnergy": {
+            "emissions":{
+                "naturalGasTextInput": 23,
+                "naturalGasSelectInput": "Dollars",
+                "electricityTextInput": 44,
+                "electricitySelectInput": "Dollars",
+                "electricityGreenTextInput": 5,
+                "fuelTextInput": 72,
+                "fuelSelectInput": "Dollars",
+                "propaneTextInput": 37,
+                "propaneSelectInput": "Dollars"
+            },
+            "reductions": {
+                "energyAC": 10,
+                "energyHeat": 10,
+                "lightsToReplace": 5,
+                "pwrMgmtSelect": "Will Do",
+                "increaseGreenInput": 10,
+                "coldWaterSelect": "Will Do",
+                "loadsPerWeek": 3,
+                "AirDrySelect": "Already Done",
+                "percentageAirDrySelect": "10% of my Laundry",
+                "fridgeSelect": "Will Do",
+                "furnaceSelect": "Will Not Do",
+                "windowSelect": "Already Done"
+            },
+            "expectedResults": {
+                "currentTotal": "14,436",
+                "newTotal": "12,279"
+            }
+        },
+        "transportation": {
+            "vehiclesCurrentEmissionsList": [
+                {
+                    "vehicleMiles": 12000,
+                    "vehicleSelec": "Per Year",
+                    "vehicleGasMileage": 22
+                },
+                {
+                    "vehicleMiles": 10000,
+                    "vehicleSelec": "Per Year",
+                    "vehicleGasMileage": 23
+                },
+                {
+                    "vehicleMiles": 5000,
+                    "vehicleSelec": "Per Year",
+                    "vehicleGasMileage": 21.4
+                }
+            ],
+            "vehiclesEmissionsReductionsList": [
+                {
+                    "reduceMilesInput": 10,
+                    "reduceMilesSelect": "Per Year",
+                    "replaceVehicleInput": 23.4
+                },
+                {
+                    "reduceMilesInput": 100,
+                    "reduceMilesSelect": "Per Year",
+                    "replaceVehicleInput": 23
+                },
+                {
+                    "reduceMilesInput": 50,
+                    "reduceMilesSelect": "Per Year",
+                    "replaceVehicleInput": 23
+                }
+            ]
+        },
+        "waste": {
+            "selectWasteRecycleMaterials": ["plastic", "magazines"], 
+            "selectWasteReduction": ["glass"]
+        },
+        "expectedResults": {}
+    }
+}
